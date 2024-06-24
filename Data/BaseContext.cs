@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Backeng.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backeng.Data
@@ -12,5 +13,6 @@ namespace Backeng.Data
         {
           
         }
+        public DbSet<User> Users { get; set; }
     }
 }
