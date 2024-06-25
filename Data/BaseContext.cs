@@ -17,5 +17,6 @@ namespace Backeng.Data
         public DbSet<DataFile> DataFiles { get; set; }
         public DbSet<Folder> Folders { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
