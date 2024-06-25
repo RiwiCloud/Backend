@@ -10,6 +10,5 @@ namespace Backend.Controllers.Folders
     [Route("api/[controller]")]
     public class CreateFolderController : ControllerBase
     {
-        
     }
 }

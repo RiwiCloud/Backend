@@ -8,7 +8,7 @@ namespace Backend.Controllers.Folders
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class FolderController : ControllerBase
+    public class FoldersController : ControllerBase
     {
         
     }

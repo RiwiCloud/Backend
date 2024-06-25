@@ -8,7 +8,7 @@ namespace Backend.Controllers.Files
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class FileController : ControllerBase
+    public class FilesController : ControllerBase
     {
         
     }
