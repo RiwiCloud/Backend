@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "DZ11YV9GbXIAhmWRI2zT67EJ9AgFQtc9IJUHTqupScPwTfCf/1DxiF2qYOJhPc91J8pSObLcrr8E4wEmg45/6w==",
+  "dgSpecHash": "7xLI6PfumXvWXfsoDkL8eP0l6DF9e059Jnfkgroah9qDFTb4ORMLkzc3AkolSzCrD1RihxrOWzkk6QE8bIkloQ==",
   "success": true,
   "projectFilePath": "/home/riwip5-021/JP 4A/Backeng/Backeng.csproj",
   "expectedPackageFiles": [
+    "/home/riwip5-021/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/home/riwip5-021/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/home/riwip5-021/.nuget/packages/microsoft.aspnetcore.openapi/8.0.5/microsoft.aspnetcore.openapi.8.0.5.nupkg.sha512",
+    "/home/riwip5-021/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/riwip5-021/.nuget/packages/microsoft.entityframeworkcore/8.0.6/microsoft.entityframeworkcore.8.0.6.nupkg.sha512",
     "/home/riwip5-021/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.6/microsoft.entityframeworkcore.abstractions.8.0.6.nupkg.sha512",
     "/home/riwip5-021/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.6/microsoft.entityframeworkcore.analyzers.8.0.6.nupkg.sha512",
