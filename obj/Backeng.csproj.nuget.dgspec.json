@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/riwip5-021/JP 4A/Backeng/Backeng.csproj": {}
+    "/home/riwip4-045/Documents/JP JObs/RiwiCould/Backend/Backeng.csproj": {}
   },
   "projects": {
-    "/home/riwip5-021/JP 4A/Backeng/Backeng.csproj": {
+    "/home/riwip4-045/Documents/JP JObs/RiwiCould/Backend/Backeng.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/riwip5-021/JP 4A/Backeng/Backeng.csproj",
+        "projectUniqueName": "/home/riwip4-045/Documents/JP JObs/RiwiCould/Backend/Backeng.csproj",
         "projectName": "Backeng",
-        "projectPath": "/home/riwip5-021/JP 4A/Backeng/Backeng.csproj",
-        "packagesPath": "/home/riwip5-021/.nuget/packages/",
-        "outputPath": "/home/riwip5-021/JP 4A/Backeng/obj/",
+        "projectPath": "/home/riwip4-045/Documents/JP JObs/RiwiCould/Backend/Backeng.csproj",
+        "packagesPath": "/home/riwip4-045/.nuget/packages/",
+        "outputPath": "/home/riwip4-045/Documents/JP JObs/RiwiCould/Backend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/riwip5-021/.nuget/NuGet/NuGet.Config"
+          "/home/riwip4-045/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -78,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/riwip4-045/.dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

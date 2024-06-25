@@ -1,4 +1,7 @@
+using Backend.Services.UserRepositories;
 using Backeng.Data;
+using Backeng.Models;
+using Backeng.Profiles;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +17,12 @@ builder.Services.AddDbContext<BaseContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("MySqlConnection"),
         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
+
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 var app = builder.Build();
 
