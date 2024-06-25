@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "63hPDLB+whE=",
+  "dgSpecHash": "TprWAZ19PP8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\WINDOWS 11\\Desktop\\RiwiCloud\\Backend\\Backeng.csproj",
+  "projectFilePath": "C:\\Users\\WINDOWS 11\\Desktop\\RiwiCloud\\Backend\\Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\WINDOWS 11\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\WINDOWS 11\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

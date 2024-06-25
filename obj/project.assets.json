@@ -1311,9 +1311,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\WINDOWS 11\\Desktop\\RiwiCloud\\Backend\\Backeng.csproj",
-      "projectName": "Backeng",
-      "projectPath": "C:\\Users\\WINDOWS 11\\Desktop\\RiwiCloud\\Backend\\Backeng.csproj",
+      "projectUniqueName": "C:\\Users\\WINDOWS 11\\Desktop\\RiwiCloud\\Backend\\Backend.csproj",
+      "projectName": "Backend",
+      "projectPath": "C:\\Users\\WINDOWS 11\\Desktop\\RiwiCloud\\Backend\\Backend.csproj",
       "packagesPath": "C:\\Users\\WINDOWS 11\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\WINDOWS 11\\Desktop\\RiwiCloud\\Backend\\obj\\",
       "projectStyle": "PackageReference",
