@@ -1,7 +1,7 @@
 using Backend.Profiles;
 using Backend.Services.UserRepositories;
-using Backeng.Data;
-using Backeng.Models;
+using Backend.Data;
+using Backend.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
