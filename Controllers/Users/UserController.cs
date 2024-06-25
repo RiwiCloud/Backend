@@ -1,36 +1,37 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Backend.Dtos;
 using Backend.Services.UserRepositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers.Users
 {
-   [ApiController]  
+    [ApiController]  
     [Route("api/[controller]")]
-public class UsersController : ControllerBase
-{
-    private readonly IUserRepository _userRepository;
-
-    public UsersController(IUserRepository userRepository)
+    public class UsersController : ControllerBase
     {
-        _userRepository = userRepository;
-    }
+        private readonly IUserRepository _userRepository;
 
-    [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] UserRegistrationDto userRegistrationDto)
-    {
-        try
+        public UsersController(IUserRepository userRepository)
         {
-            var user = await _userRepository.RegisterUserAsync(userRegistrationDto);
-            return Ok(user);
+            _userRepository = userRepository;
         }
-        catch (Exception ex)
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] UserRegistrationDto userRegistrationDto)
         {
-            return BadRequest(ex.Message);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var user = await _userRepository.RegisterUserAsync(userRegistrationDto);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
     }
-}
 }
