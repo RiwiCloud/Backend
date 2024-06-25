@@ -4,13 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Backend.Dtos;
 using Backeng.Models;
+using AutoMapper;
 
-namespace Backeng.Profiles
+namespace Backend.Profiles
 {
-    public class AutoMapperProfile
+    public class AutoMapperProfile : Profile
     {
-        CreateMap<UserRegistrationDto, User>()
-            .ForMember(dest => dest.DateCreated, opt => opt.MapFrom(src => DateTime.Now))
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => "Active"));
+        public AutoMapperProfile()
+        {
+            CreateMap<UserRegistrationDto, User>()
+                .ForMember(dest => dest.DateCreated, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => "Active"));
+        }
     }
 }

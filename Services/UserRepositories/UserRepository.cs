@@ -16,11 +16,6 @@ namespace Backend.Services.UserRepositories
     private readonly BaseContext _context;
     private readonly IMapper _mapper;
 
-    public UserRepository(BaseContext context)
-    {
-        _context = context;
-    }
-
      public async Task<User> AddUserAsync(User user)
     {
         _context.Users.Add(user);
@@ -38,7 +33,7 @@ namespace Backend.Services.UserRepositories
         return await _context.Users.AnyAsync(u => u.Email == email);
     }
 
-    public async Task<User> RegisterUserAsync(UserRegistrationDto userRegistrationDto)
+    public async Task<User> RegisterUserAsync(UserRegistrationDto userRegistrationDto) // Asegúrate de que devuelve Task<User>
     {
         if (await UserExistsAsync(userRegistrationDto.Email))
         {
@@ -53,10 +48,5 @@ namespace Backend.Services.UserRepositories
         return await AddUserAsync(user);
     }
 
-        Task IUserRepository.RegisterUserAsync(UserRegistrationDto userRegistrationDto)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
+}
 }
