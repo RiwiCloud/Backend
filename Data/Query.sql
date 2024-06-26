@@ -5,7 +5,7 @@ CREATE TABLE Users (
     Name VARCHAR(145) ,
     Email VARCHAR(255)  UNIQUE,
     Password VARCHAR(16),
-    Status ENUM("Active","Inactive"),
+    Status ENUM('Active', 'Inactive'),
     DateCreated DATE
 );
 
@@ -14,10 +14,11 @@ CREATE TABLE Folders (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(50),
     User_Id INT,
-    Status ENUM("Created","Delete"),
+    ParentFolder_Id INT NULL,
+    Status ENUM('Active', 'Inactive'),
     DateCreated DATE,
     FOREIGN KEY (User_Id) REFERENCES Users(Id)
-   
+    CONSTRAINT FK_Folders_ParentFolder FOREIGN KEY (ParentFolderId) REFERENCES Folders(Id) ON DELETE CASCADE
 );
 
 -- Creación de la tabla Files
@@ -27,7 +28,7 @@ CREATE TABLE Files (
     File_Id INT,
     Status ENUM("Created","Delete"),
     DateCreated DATE,
-    FOREIGN KEY (File_Id) REFERENCES Folders(Id)
+    FOREIGN KEY (Folder_Id) REFERENCES Folders(Id) ON DELETE CASCADE
 );
 
 
