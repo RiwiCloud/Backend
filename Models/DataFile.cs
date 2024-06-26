@@ -15,7 +15,7 @@ namespace Backend.Models
         public string Name { get; set; }
 
         [Required]
-        public int File_Id { get; set; }
+        public int Folder_Id { get; set; }
         public string Status { get; set; } = "Active";
         public DateTime DateCreated { get; set; } = DateTime.Now;
 

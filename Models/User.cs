@@ -15,5 +15,8 @@ namespace Backend.Models
         public string? Password { get; set; }
         public string? Status { get; set; } = "Active";
         public DateTime DateCreated { get; set; } = DateTime.Now;
+
+        public List<Folder> Folders { get; set; }
+        
     }
 }
