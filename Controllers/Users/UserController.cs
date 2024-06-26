@@ -1,6 +1,8 @@
 using Backend.Dtos;
+using Backend.Mail;
 using Backend.Services.UserRepositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Backend.Controllers.Users
 {
@@ -9,10 +11,12 @@ namespace Backend.Controllers.Users
     public class UsersController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
+        private readonly MailController _mailController;
 
-        public UsersController(IUserRepository userRepository)
+        public UsersController(IUserRepository userRepository, MailController mailController)
         {
             _userRepository = userRepository;
+            _mailController = mailController;
         }
 
         [HttpPost("register")]
@@ -26,6 +30,10 @@ namespace Backend.Controllers.Users
             try
             {
                 var user = await _userRepository.RegisterUserAsync(userRegistrationDto);
+
+                // Enviar correo de confirmación
+                await _mailController.EnviarCorreo(user.Email, user.Name, userRegistrationDto.Password);
+
                 return Ok(user);
             }
             catch (Exception ex)
