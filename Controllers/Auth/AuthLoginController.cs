@@ -42,13 +42,13 @@ namespace Backend.Controllers.Auth
             // Crea las reclamaciones del token JWT (en este caso, solo el identificador del nombre)
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, User.id.ToString())
+                new Claim(ClaimTypes.NameIdentifier, MarketingUser.Id.ToString())
             };
 
             // Configura las opciones del token JWT incluyendo emisor, audiencia, reclamaciones, fecha de expiración y credenciales de firma
             var tokenOptions = new JwtSecurityToken(
-                issuer: "https://localhost:5205",
-                audience: "https://localhost:5205",
+                issuer: "https://localhost:5098",
+                audience: "https://localhost:5098",
                 claims: claims,
                 expires: DateTime.Now.AddMonths(1),
                 signingCredentials: signinCredentials

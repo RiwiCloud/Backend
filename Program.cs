@@ -5,6 +5,9 @@ using Backend.Data;
 using Backend.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,8 +28,8 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = "https://localhost:5205",
-        ValidAudience = "https://localhost:5205",
+        ValidIssuer = "https://localhost:5098",
+        ValidAudience = "https://localhost:5098",
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
 });
