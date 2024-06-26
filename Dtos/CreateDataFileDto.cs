@@ -10,5 +10,8 @@ namespace Backend.Dtos
     {
         [Required]
         public string Name { get; set; }
+
+        [Required]
+        public int Folder_Id { get; set; }
     }
 }
