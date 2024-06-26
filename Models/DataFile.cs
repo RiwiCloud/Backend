@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 
 namespace Backend.Models
 {
-    public class User
-    {   
+    public class DataFile
+    {
         [Key]
         public int Id { get; set; }
-        public string? Name { get; set; }
-        public string? Email { get; set; }
-        public string? Password { get; set; }
-        public string? Status { get; set; } = "Active";
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public int File_Id { get; set; }
+        public string Status { get; set; } = "Active";
         public DateTime DateCreated { get; set; } = DateTime.Now;
+
+        //Propiedades de navegación
+        public Folder Folder { get; set; }
     }
 }
