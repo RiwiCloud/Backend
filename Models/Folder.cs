@@ -21,6 +21,7 @@ namespace Backend.Models
         public DateTime DateCreated { get; set; } = DateTime.Now;
 
         // Propiedades de navegación
-        public List<DataFile> DataFile { get; set; }
+        public User User { get; set; }
+        public List<DataFile> DataFiles { get; set; }
     }
 }
