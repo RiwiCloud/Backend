@@ -1,4 +1,3 @@
-using Backend.Mail;
 using Backend.Profiles;
 using Backend.Services.UserRepositories;
 using Backend.Data;
@@ -8,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Backend.Services.Email;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +43,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddScoped<MailerSendService>();
 
 builder.Services.AddDbContext<BaseContext>(options =>
     options.UseMySql(
@@ -54,7 +55,7 @@ builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddHttpClient();
-builder.Services.AddScoped<MailController>();
+builder.Services.AddScoped<MailerSendService>();
 
 
 var app = builder.Build();
@@ -68,6 +69,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
 app.Run();
 
