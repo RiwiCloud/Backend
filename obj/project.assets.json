@@ -4998,24 +4998,26 @@
     ]
   },
   "packageFolders": {
-    "/home/riwip4-045/.nuget/packages/": {}
+    "C:\\Users\\Juan Pablo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/riwip4-045/Documents/JP JObs/RiwiCould/Backend/Backend.csproj",
+      "projectUniqueName": "D:\\juan pablo\\disco d\\EJERICICIOS RIWI\\RiwiCould\\Backend\\Backend.csproj",
       "projectName": "Backend",
-      "projectPath": "/home/riwip4-045/Documents/JP JObs/RiwiCould/Backend/Backend.csproj",
-      "packagesPath": "/home/riwip4-045/.nuget/packages/",
-      "outputPath": "/home/riwip4-045/Documents/JP JObs/RiwiCould/Backend/obj/",
+      "projectPath": "D:\\juan pablo\\disco d\\EJERICICIOS RIWI\\RiwiCould\\Backend\\Backend.csproj",
+      "packagesPath": "C:\\Users\\Juan Pablo\\.nuget\\packages\\",
+      "outputPath": "D:\\juan pablo\\disco d\\EJERICICIOS RIWI\\RiwiCould\\Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/riwip4-045/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Juan Pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5028,6 +5030,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -5094,7 +5101,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
