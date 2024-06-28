@@ -68,6 +68,40 @@ namespace Backend.Services.Implementations
         #endregion
 
 
+          public async Task<bool> DeleteFolderAsync(int id)
+    {
+        // Encuentra la carpeta en la base de datos
+        var folder = await _baseContext.Folders
+                                       .Include(f => f.ChildFolders)
+                                       .Include(f => f.DataFiles)
+                                       .FirstOrDefaultAsync(f => f.Id == id);
+        if (folder == null)
+        {
+            return false; // No se encontró la carpeta
+        }
+
+        // Elimina los archivos de datos relacionados
+        if (folder.DataFiles != null && folder.DataFiles.Any())
+        {
+            _baseContext.DataFiles.RemoveRange(folder.DataFiles);
+        }
+
+        // Elimina las carpetas hijas relacionadas
+        if (folder.ChildFolders != null && folder.ChildFolders.Any())
+        {
+            foreach (var childFolder in folder.ChildFolders)
+            {
+                await DeleteFolderAsync(childFolder.Id);
+            }
+        }
+
+        // Elimina la carpeta
+        _baseContext.Folders.Remove(folder);
+        await _baseContext.SaveChangesAsync();
+
+        return true; // Eliminación exitosa
+    }
+
 
     }
 }
