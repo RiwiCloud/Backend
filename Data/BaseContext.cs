@@ -20,26 +20,32 @@ namespace Backend.Data
         // Configuracion de relaciones entre tablas
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Relacion entre DataFile y Folder
-            modelBuilder.Entity<DataFile>()
-                .HasOne(d => d.Folder)
-                .WithMany(f => f.DataFiles)
-                .HasForeignKey(d => d.Folder_Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            // Relacion entre Folder y User
+            // Configuración de la relación User-Folder (uno a muchos)
             modelBuilder.Entity<Folder>()
                 .HasOne(f => f.User)
                 .WithMany(u => u.Folders)
                 .HasForeignKey(f => f.User_Id)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Relacion entre User y Folder
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Folders)
-                .WithOne(f => f.User)
-                .HasForeignKey(f => f.User_Id)
+            // Configuración de la relación Folder-DataFile (uno a muchos)
+            modelBuilder.Entity<DataFile>()
+                .HasOne(df => df.Folder)
+                .WithMany(f => f.DataFiles)
+                .HasForeignKey(df => df.Folder_Id)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Configuración de la relación Folder-ParentFolder (auto-referencia, uno a muchos)
+            modelBuilder.Entity<Folder>()
+                .HasOne(f => f.ParentFolder)
+                .WithMany(f => f.ChildFolders)
+                .HasForeignKey(f => f.ParentFolder_Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Configurar la propiedad de navegación inversa para las carpetas hijas
+            modelBuilder.Entity<Folder>()
+                .HasMany(f => f.ChildFolders)
+                .WithOne(f => f.ParentFolder)
+                .HasForeignKey(f => f.ParentFolder_Id);
         }
     }
 }

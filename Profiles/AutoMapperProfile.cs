@@ -19,7 +19,7 @@ namespace Backend.Profiles
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => "Active"));
 
             // Mapeo de DataFile a CreateFilesDto (de la entidad al DTO)
-            CreateMap<CreateFilesDto, DataFile>()
+            CreateMap<CreateFolderDto, Folder>()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
             
         }

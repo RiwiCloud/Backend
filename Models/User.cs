@@ -17,6 +17,5 @@ namespace Backend.Models
         public DateTime DateCreated { get; set; } = DateTime.Now;
 
         public List<Folder> Folders { get; set; }
-        
     }
 }
