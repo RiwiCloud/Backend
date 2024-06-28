@@ -42,33 +42,6 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 
 
-// Clave para la autenticación JWT
-var key = Encoding.UTF8.GetBytes("ncjdncjvurbuedxwn233nnedxee+dfr-");
-
-// Configuración de la autenticación JWT
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = "https://localhost:5098",
-        ValidAudience = "https://localhost:5098",
-        IssuerSigningKey = new SymmetricSecurityKey(key)
-    };
-});
-
-// Configuración de la autorización
-builder.Services.AddAuthorization();
-
-
 // Agregar servicios al contenedor
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
