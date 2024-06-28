@@ -4998,19 +4998,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Juan Pablo\\.nuget\\packages\\": {}
+    "C:\\Users\\WINDOWS 11\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\juan pablo\\disco d\\EJERICICIOS RIWI\\RiwiCould\\Backend\\Backend.csproj",
+      "projectUniqueName": "C:\\Users\\WINDOWS 11\\Desktop\\RiwiCloud\\Backend\\Backend.csproj",
       "projectName": "Backend",
-      "projectPath": "D:\\juan pablo\\disco d\\EJERICICIOS RIWI\\RiwiCould\\Backend\\Backend.csproj",
-      "packagesPath": "C:\\Users\\Juan Pablo\\.nuget\\packages\\",
-      "outputPath": "D:\\juan pablo\\disco d\\EJERICICIOS RIWI\\RiwiCould\\Backend\\obj\\",
+      "projectPath": "C:\\Users\\WINDOWS 11\\Desktop\\RiwiCloud\\Backend\\Backend.csproj",
+      "packagesPath": "C:\\Users\\WINDOWS 11\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\WINDOWS 11\\Desktop\\RiwiCloud\\Backend\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Juan Pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\WINDOWS 11\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5018,6 +5023,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5104,13 +5110,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché D:\\juan pablo\\disco d\\EJERICICIOS RIWI\\RiwiCould\\Backend\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
