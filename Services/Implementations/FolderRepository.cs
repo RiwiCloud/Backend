@@ -102,6 +102,24 @@ namespace Backend.Services.Implementations
         return true; // Eliminación exitosa
     }
 
+        public async Task<Folder> UpdateFolderAsync(UpdateFolderDto updateFolderDto)
+        {
+            var folder = await _baseContext.Folders.FirstOrDefaultAsync(f => f.Id == updateFolderDto.Id);
+            if (folder == null)
+            {
+                return null; // No se encontró la carpeta
+            }
+
+            // Mapea las propiedades actualizadas del DTO al objeto Folder
+            _mapper.Map(updateFolderDto, folder);
+
+            // Guarda los cambios en la base de datos
+            _baseContext.Folders.Update(folder);
+            await _baseContext.SaveChangesAsync();
+
+            return folder;
+        }
+
 
     }
 }
