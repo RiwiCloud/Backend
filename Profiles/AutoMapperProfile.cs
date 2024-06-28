@@ -21,6 +21,9 @@ namespace Backend.Profiles
             // Mapeo de DataFile a CreateFilesDto (de la entidad al DTO)
             CreateMap<CreateFolderDto, Folder>()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<UpdateFolderDto, Folder>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
             
         }
     }

@@ -14,5 +14,7 @@ namespace Backend.Services.Interfaces
         Task<IEnumerable<Folder>> GetAllFoldersAsync();
         Task<Folder> GetByIdFolderAsync(int id);
         Task<bool> DeleteFolderAsync(int id);
+
+        Task<Folder> UpdateFolderAsync(UpdateFolderDto updateFolderDto);
     }
 }
