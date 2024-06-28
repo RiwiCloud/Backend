@@ -1,4 +1,3 @@
-using Backend.Mail;
 using Backend.Profiles;
 using Backend.Services.UserRepositories;
 using Backend.Data;
@@ -9,9 +8,66 @@ using Backend.Controllers.Folders;
 using Backend.Services.Interfaces;
 using Backend.Services.Implementations;
 using System.Text.Json.Serialization;
-
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Backend.Services.Email;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Clave para la autenticación JWT
+var key = Encoding.UTF8.GetBytes("ncjdncjvurbuedxwn233nnedxee+dfr-");
+
+// Configuración de la autenticación JWT
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "https://localhost:5098",
+        ValidAudience = "https://localhost:5098",
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+});
+
+// Configuración de la autorización
+builder.Services.AddAuthorization();
+
+
+// Clave para la autenticación JWT
+var key = Encoding.UTF8.GetBytes("ncjdncjvurbuedxwn233nnedxee+dfr-");
+
+// Configuración de la autenticación JWT
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "https://localhost:5098",
+        ValidAudience = "https://localhost:5098",
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+});
+
+// Configuración de la autorización
+builder.Services.AddAuthorization();
+
 
 // Agregar servicios al contenedor
 builder.Services.AddEndpointsApiExplorer();
@@ -37,7 +93,8 @@ builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IFolderRepository, FolderRepository>();
 builder.Services.AddHttpClient();
-builder.Services.AddScoped<MailController>();
+builder.Services.AddScoped<MailerSendService>();
+
 
 var app = builder.Build();
 
@@ -51,5 +108,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
 app.Run();

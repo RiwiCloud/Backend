@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace Backend.Models
 {
     public class User
-    {   
-        [Key]
+    {
+    internal object?[]? userId;
+
+    [Key]
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? Email { get; set; }
