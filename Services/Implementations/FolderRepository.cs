@@ -16,6 +16,7 @@ namespace Backend.Services.Implementations
         // Inyeccion de dependencias de la base de datos
         private readonly BaseContext _baseContext;
         private readonly IMapper _mapper;
+        
         public FolderRepository(BaseContext baseContext, IMapper mapper)
         {
             _baseContext = baseContext;
@@ -48,7 +49,7 @@ namespace Backend.Services.Implementations
 
             if (folders == null || !folders.Any())
             {
-                // REtorna una colección vacia
+                // Retorna una colección vacia
                 return Enumerable.Empty<Folder>();
             }
 
@@ -56,9 +57,13 @@ namespace Backend.Services.Implementations
             return folders;
         }
 
-        public Task<Folder> GetByIdFolderAsync(int id)
+        public async Task<Folder> GetByIdFolderAsync(int id)
         {
-            throw new NotImplementedException();
+            // Implementación del método para obtener una carpeta por ID
+            return await _baseContext.Folders
+                                     .Include(f => f.DataFiles) // Incluir los archivos de datos si es necesario
+                                     .Include(f => f.ParentFolder) // Incluir la carpeta padre si es necesario
+                                     .FirstOrDefaultAsync(f => f.Id == id);
         }
 
         public Task<Folder> UpdateFolderAsync(CreateFolderDto createFolderDto)
@@ -67,40 +72,39 @@ namespace Backend.Services.Implementations
         }
         #endregion
 
-
-          public async Task<bool> DeleteFolderAsync(int id)
-    {
-        // Encuentra la carpeta en la base de datos
-        var folder = await _baseContext.Folders
-                                       .Include(f => f.ChildFolders)
-                                       .Include(f => f.DataFiles)
-                                       .FirstOrDefaultAsync(f => f.Id == id);
-        if (folder == null)
+        public async Task<bool> DeleteFolderAsync(int id)
         {
-            return false; // No se encontró la carpeta
-        }
-
-        // Elimina los archivos de datos relacionados
-        if (folder.DataFiles != null && folder.DataFiles.Any())
-        {
-            _baseContext.DataFiles.RemoveRange(folder.DataFiles);
-        }
-
-        // Elimina las carpetas hijas relacionadas
-        if (folder.ChildFolders != null && folder.ChildFolders.Any())
-        {
-            foreach (var childFolder in folder.ChildFolders)
+            // Encuentra la carpeta en la base de datos
+            var folder = await _baseContext.Folders
+                                           .Include(f => f.ChildFolders)
+                                           .Include(f => f.DataFiles)
+                                           .FirstOrDefaultAsync(f => f.Id == id);
+            if (folder == null)
             {
-                await DeleteFolderAsync(childFolder.Id);
+                return false; // No se encontró la carpeta
             }
+
+            // Elimina los archivos de datos relacionados
+            if (folder.DataFiles != null && folder.DataFiles.Any())
+            {
+                _baseContext.DataFiles.RemoveRange(folder.DataFiles);
+            }
+
+            // Elimina las carpetas hijas relacionadas
+            if (folder.ChildFolders != null && folder.ChildFolders.Any())
+            {
+                foreach (var childFolder in folder.ChildFolders)
+                {
+                    await DeleteFolderAsync(childFolder.Id);
+                }
+            }
+
+            // Elimina la carpeta
+            _baseContext.Folders.Remove(folder);
+            await _baseContext.SaveChangesAsync();
+
+            return true; // Eliminación exitosa
         }
-
-        // Elimina la carpeta
-        _baseContext.Folders.Remove(folder);
-        await _baseContext.SaveChangesAsync();
-
-        return true; // Eliminación exitosa
-    }
 
         public async Task<Folder> UpdateFolderAsync(UpdateFolderDto updateFolderDto)
         {
@@ -119,7 +123,5 @@ namespace Backend.Services.Implementations
 
             return folder;
         }
-
-
     }
 }
