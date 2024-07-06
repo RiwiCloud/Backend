@@ -41,7 +41,6 @@ builder.Services.AddAuthentication(options =>
 // Configuración de la autorización
 builder.Services.AddAuthorization();
 
-
 // Agregar servicios al contenedor
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -68,10 +67,18 @@ builder.Services.AddScoped<IFolderRepository, FolderRepository>();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<MailerSendService>();
 
+// Configurar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
-
-app.MapControllers();
 
 // Configuración del pipeline de solicitudes HTTP
 if (app.Environment.IsDevelopment())
@@ -81,7 +88,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
