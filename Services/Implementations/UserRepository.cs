@@ -56,7 +56,7 @@ namespace Backend.Services.UserRepositories
             return user;
         }
 
-        private async Task SendWelcomeEmail(User user)
+       private async Task SendWelcomeEmail(User user)
         {
             var subject = "Registro con exito - Detalles Registro";
             var textContent = $"Hola {user.Name},\n\n";
@@ -76,6 +76,12 @@ namespace Backend.Services.UserRepositories
                 $"<a href='mailto:[Correo Electrónico de Soporte]'>riwicouldo.soporte@riwicould.com</a><br>" +
                 $"Teléfono de Soporte 8654324</p>";
 
+            // Validar los datos antes de enviar el correo
+            if (string.IsNullOrWhiteSpace(user.Email) || string.IsNullOrWhiteSpace(user.Name))
+            {
+                throw new Exception("Invalid email or name.");
+            }
+
             await _mailerSendService.SendEmailAsync(
                 from: "MS_MZLq3j@trial-jpzkmgq9opy4059v.mlsender.net",
                 fromName: "RiwiCould",
@@ -86,6 +92,7 @@ namespace Backend.Services.UserRepositories
                 html: htmlContent
             );
         }
+
 
   
   }
