@@ -50,7 +50,7 @@ namespace Backend.Controllers.Auth
                 issuer: "https://localhost:5098",
                 audience: "https://localhost:5098",
                 claims: claims,
-                expires: DateTime.Now.AddMonths(1),
+                expires: DateTime.Now.AddMinutes(1),
                 signingCredentials: signinCredentials
             );
 

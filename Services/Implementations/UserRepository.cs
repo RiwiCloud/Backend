@@ -73,7 +73,7 @@ namespace Backend.Services.UserRepositories
                 $"<p>Si tienes alguna pregunta o necesitas más información, no dudes en contactarnos.</p>" +
                 $"<p>Saludos cordiales,</p>" +
                 $"<p>RiwiCould<br>" +
-                $"<a href='mailto:[Correo Electrónico de Soporte]'>riwicouldo.soporte@riwicould.com</a><br>" +
+                $"<a href='mailto:[Correo Electrónico de Soporte]'>riwicloud.soporte@riwicould.com</a><br>" +
                 $"Teléfono de Soporte 8654324</p>";
 
             // Validar los datos antes de enviar el correo
