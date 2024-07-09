@@ -83,7 +83,7 @@ namespace Backend.Services.UserRepositories
             }
 
             await _mailerSendService.SendEmailAsync(
-                from: "MS_MZLq3j@trial-jpzkmgq9opy4059v.mlsender.net",
+                from: "MS_y1aSg4@trial-jpzkmgq9opy4059v.mlsender.net",
                 fromName: "RiwiCould",
                 to: new List<string> { user.Email },
                 toNames: new List<string> { user.Name },
